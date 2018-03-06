@@ -14,6 +14,9 @@ PyQuery、BeautifulSoup、request、PIL(Pillow)
 一页有10条微博
 可以控制是否下载大图以及是否下载用户转发的内容
 
+运行python main.py
+会提示输入用户名密码，如果登录成功，下次登录不必再次输入凭据
+
 ## License
 
 MIT许可证

@@ -3,12 +3,14 @@ import requests
 import pickle
 from pyquery import PyQuery
 
-#主登录函数
+# 主登录函数
+
+
 def login():
     session = loadsession()
     if session == None:
-        username=input("Your Username:")
-        password=input("Your Password:")
+        username = input("Your Username:")
+        password = input("Your Password:")
         session = login_wb(username, password)
         return session
     else:
@@ -18,7 +20,9 @@ def login():
         else:
             return session
 
-#载入已经保存的session
+# 载入已经保存的session
+
+
 def loadsession():
     if path.exists('session'):
         with open('session', 'rb') as fr:
@@ -28,7 +32,9 @@ def loadsession():
     else:
         return None
 
-#判断session过期需要重新登录
+# 判断session过期需要重新登录
+
+
 def need_to_login(session):
     resp = session.get('https://m.weibo.cn')
     if 'passport' in resp.url or 'login' in resp.url:
@@ -37,7 +43,9 @@ def need_to_login(session):
     else:
         return False
 
-#登录函数
+# 登录函数
+
+
 def login_wb(username, password):
     session = requests.session()
     url = 'http://m.weibo.cn'

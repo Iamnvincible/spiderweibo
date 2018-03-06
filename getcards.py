@@ -15,7 +15,9 @@ def get_cards(session, userid, page):
     print("got data!")
     return jobject['data']['cards']
 
-#解析内容，retweeted=1为获取转发内容
+# 解析内容，retweeted=1为获取转发内容
+
+
 def parser_cards(session, data: list, retweeted=0):
     POST_PATH = 'https://m.weibo.cn/statuses/extend?id={0}'
     cards = []
@@ -28,7 +30,7 @@ def parser_cards(session, data: list, retweeted=0):
         pics = []
         # print(card['mblog']['created_at'])
         accuracytime = getaccuracytime(session, card)
-        #可以在此筛选时间
+        # 可以在此筛选时间
         # t = time.strptime(accuracytime, "%Y-%m-%d %H:%M:%S %A")
         # f = time.strptime('2018-02-14', "%Y-%m-%d")
         # if t.tm_year == f.tm_year and t.tm_mon == t.tm_mon and t.tm_mday == f.tm_mday:

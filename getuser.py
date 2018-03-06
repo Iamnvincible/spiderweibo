@@ -4,7 +4,7 @@ import json
 
 
 def getuserinfo(session, userid):
-    USERINFOURL ='https://m.weibo.cn/api/container/getIndex?type=uid&value=%(id)s&containerid=100505%(id)s' % {
+    USERINFOURL = 'https://m.weibo.cn/api/container/getIndex?type=uid&value=%(id)s&containerid=100505%(id)s' % {
         'id': userid}
     r = session.get(USERINFOURL)
    # print(r.content)

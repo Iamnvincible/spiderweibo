@@ -5,7 +5,9 @@ import time
 import codecs
 from PIL import Image
 
-#将cards中的微博文本内容保存到文本中
+# 将cards中的微博文本内容保存到文本中
+
+
 def saveutf8txt(cards):
     folder = time.strftime("%Y-%m-%d", time.localtime())
     if not os.path.exists(folder):
@@ -16,8 +18,10 @@ def saveutf8txt(cards):
         f.write(card[0])
         f.close()
 
-#将cards中的文本和图片保存到markdown文件中，可选参数largepic=1是下载大图
-def savetomd(cards,largepic=0):
+# 将cards中的文本和图片保存到markdown文件中，可选参数largepic=1是下载大图
+
+
+def savetomd(cards, largepic=0):
     folder = time.strftime("%Y-%m-%d", time.localtime())
     if not os.path.exists(folder):
         os.mkdir(folder)
@@ -27,7 +31,7 @@ def savetomd(cards,largepic=0):
         f.write(card[0])
         if len(card[1]) > 0:
             print('downloading picture(s)...')
-            if largepic==1:
+            if largepic == 1:
                 pics = get_pics(card[1][1], card[2])
             else:
                 pics = get_pics(card[1][0], card[2])
@@ -40,7 +44,9 @@ def savetomd(cards,largepic=0):
         f.write('\n\n')
     f.close()
 
-#下载图片到当前目录，以微博的id为文件名加下划线数字递增
+# 下载图片到当前目录，以微博的id为文件名加下划线数字递增
+
+
 def get_pics(pics, ids):
     filenames = []
     for index, u in enumerate(pics):
@@ -54,7 +60,9 @@ def get_pics(pics, ids):
             f.write(r.content)
     return filenames
 
-#将多张图片合并成一张图
+# 将多张图片合并成一张图
+
+
 def Incorparate(squarepics):
     count = len(squarepics)
     sq = 128
@@ -85,7 +93,9 @@ def Incorparate(squarepics):
             col = int((i+1)/3)
         return target
 
-#图片的剪切
+# 图片的剪切
+
+
 def cropimg(filename):
     im = Image.open(filename)
     length, width = im.size
@@ -100,7 +110,9 @@ def cropimg(filename):
         region = im.crop((x, y, x+square, square))
     return region.resize((128, 128), Image.ANTIALIAS)
 
-#获得剪切合并后的图片
+# 获得剪切合并后的图片
+
+
 def getIncorporated(picnames):
     if len(picnames) == 1:
         im = Image.open(picnames[0]).convert('RGB')
